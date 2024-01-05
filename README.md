@@ -287,7 +287,7 @@ The containers will be deleted.
 - **Availability Tracking**: Utilizes a Dict to monitor domain availability.
 - **urllib Library**: Extracts domains from endpoint URLs for tracking purposes.
 - This program will continuously test the endpoints every 15 seconds and print the availability % of each domain.
-- Program terminates after hitting `Ctrl + C`.
+- Program terminates after hitting `Ctrl + C` or `control + Z` on Mac.
 
 ## Future Improvements
 
