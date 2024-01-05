@@ -74,7 +74,7 @@ def test_endpoints_health(endpoint_list: List[Dict], endpoint_status: Dict) -> N
     for domain, [up, down] in endpoint_status.items():
         sum = up + down
 
-        avail_perc = up / sum * 100 if sum != 0 else 0
+        avail_perc = (up / sum) * 100 if sum != 0 else 0
         print(f'{domain} has {avail_perc:.0f}% availability percentage')
         logging.info(
             f"{domain} has {avail_perc:.0f}% availability percentage")
