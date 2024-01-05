@@ -144,7 +144,7 @@ www.fetchrewards.com has 100% availability percentage
 </details>
 
 <details>
-<summary>Enhanced Implementation (Dockerized Implementation with Prometheus Monitoring)</summary>
+<summary>Enhanced Implementation (Dockerized Implementation with Prometheus Monitoring > Recommended)</summary>
 
 ### Running the script
 
