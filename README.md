@@ -64,9 +64,7 @@ This project implements a program to monitor the health of a set of HTTP endpoin
 
 ## Pre-requisities and Installation steps
 
-```
-Note: This setup has been tested on macOS. If testing on a Windows environment, ensure to change any `/` in the paths to `\`.
-```
+**Note: This setup has been tested on macOS. If testing on a Windows environment, ensure to change any `/` in the paths to `\`.**
 
 1. Make sure you have `python`(Version 3.9+) and `pip` installed.
 
