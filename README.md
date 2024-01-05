@@ -289,10 +289,11 @@ The containers will be deleted.
 - This program will continuously test the endpoints every 15 seconds and print the availability % of each domain.
 - Program terminates after hitting `Ctrl + C`.
 
-## Potential Improvements
+## Future Improvements
 
-- Currently, just visualizing the availibility for the first domain in input YAML configuration file. It can be changed to visualize availabilities of all the domains.
-- Integrating with Graphana for better visualization.
+- Presently, focusing on visualizing the availability solely for the first domain listed in the input YAML configuration file. Consideration is given to expand this visualization to encompass availabilities across all domains.
+- Exploring the integration of Graphana to enhance visualization capabilities, aiming for a more comprehensive and insightful representation of availability metrics.
+- Implementing alert mechanisms triggered when the availability of monitored domains falls below a specified threshold. Utilizing Prometheus, these rules can be configured to send alerts via diverse channels such as email, Slack notifications, among others.
 
 ## About Me
 
