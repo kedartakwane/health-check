@@ -4,15 +4,38 @@
 
 This project implements a program to monitor the health of a set of HTTP endpoints. The program reads an input argument to a file path containing a list of HTTP endpoints in YAML format. It tests the health of these endpoints every 15 seconds and keeps track of the availability percentage of the HTTP domain names being monitored.
 
+## Salient Features
+
+- **Logging interactions and persistence**:
+
+  - Tracks and stores interactions within log files for future debugging and analysis purposes.
+
+- **Continuous Monitoring via Prometheus**:
+
+  - Implemented Prometheus for consistent monitoring, observing, and analyzing health metrics, ensuring sustained application reliability.
+
+- **Visualizing Availability Metrics**:
+
+  - Utilizes Prometheus UI to visualize availability metrics, facilitating quick insights into domain health statuses over time.
+
+- **Dockerized Application**:
+
+  - Deployed as a Dockerized application, ensuring consistent behavior across various environments and simplifying deployment processes.
+
+- **FastAPI Framework Integration**:
+
+  - Enhanced the implementation using the FastAPI web framework, leveraging its capabilities for efficient API development.
+
+- **Reliable Execution with Standard Libraries**:
+  - Leverages standard Python libraries such as PyYAML, requests, and urllib for robust and reliable application execution.
+
 ## Directory structure
 
 ```
 .
 ├── Dockerfile                  ...[Blueprint of the enhanced implementation to be assembled]
 ├── README.md                   ...[Repo README file]
-├── constants.py                ...[Logger Constants]
 ├── docker-compose.yml          ...[Define and configure health-check and prometheus services of enhanced implementation]
-├── docker-entrypoint.sh        ...[Checks env vars and starts python server in the enhanced implementation]
 ├── env.local                   ...[Env file that contains the YAML endpoints file path and Logger level]
 ├── images                              ...[Images directory]
 │   ├── avail-first-domain-graph.png    ...[Graph showing how the Availibility changes over time]
@@ -29,13 +52,17 @@ This project implements a program to monitor the health of a set of HTTP endpoin
 │   └── input2.yml              ...[Another sample YAML file with Endpoints]
 ├── logs                        ...[Logs directory]
 │   └── health-check.log        ...[Logs Generated After Running the Script]
-├── main.py                     ...[Script for Health Check Execution]
 ├── prometheus.yml              ...[Setup prometheus to monitor the health-check application]
 ├── requirements.txt            ...[List of Required Libraries]
-└── server.py                   ...[FastAPI server to test endpoints and expose metrics needed by Prometheus for monitoring]
-
-4 directories, 23 files
+└── src                         ...[Source directory]
+    ├── helper                  ...[Helper directory]
+    │   └── constants.py        ...[Logger Constants]
+    ├── main.py                 ...[Script for Health Check Execution]
+    └── server.py               ...[FastAPI server to test endpoints and expose metrics needed by Prometheus for monitoring]
+6 directories, 22 files
 ```
+
+## NOTE:
 
 ## Pre-requisities and Installation steps
 
@@ -93,7 +120,7 @@ Output:
      ![constants.py file](/images/constants.png)
 
 ```bash
-python main.py --f=inputs/input.yml
+python src/main.py --f=inputs/input.yml
 ```
 
 3. The script starts executing and you will see something like this on the terminal:
@@ -269,7 +296,7 @@ The containers will be deleted.
 
 </details>
 
-## Implementation Highlights
+## Project Highlights
 
 - **Endpoint Health Monitoring**: Conducts health checks every 15 seconds, evaluating HTTP response codes and response latency.
 - **Logging**:

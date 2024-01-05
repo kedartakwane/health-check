@@ -10,7 +10,7 @@ import argparse
 from urllib.parse import urlparse
 from typing import Dict, List
 import logging
-from constants import LOG_FORMAT, LOG_FILE_PATH, LOG_DATE_FORMAT
+from helper.constants import LOG_FORMAT, LOG_FILE_PATH, LOG_DATE_FORMAT
 import prometheus_client
 import os
 
@@ -133,18 +133,23 @@ async def home():
     return "Hello! The script has began execution and the endpoints will be triggered every 15 seconds. Go to http://localhost:9090/metrics to view the metrics. To view the metric graph go to http://localhost:9090/graph and enter 'available_perc_first_domain' hit enter and select the 'Graph' tab."
 
 if __name__ == "__main__":
-    # To parse command line argument for the Config file
-    p = argparse.ArgumentParser()
-    p.add_argument('--f', dest='file_path',
-                   help='Enter the Configuration YAML file path.', required=True)
-    p.add_argument('--log', dest="loglevel",
-                   help="Enter the Log level if needed. [optional]")
-    args = p.parse_args()
+    # Check if the env var CONFIG_FILE is set or not
+    if not os.environ['CONFIG_FILE']:
+        raise Exception(
+            "Please set the CONFIG_FILE env var to point to a valid YAML file.")
+
+    config_file = os.environ['CONFIG_FILE']
 
     # Setup logging for this application
     os.makedirs(os.path.dirname(LOG_FILE_PATH), exist_ok=True)
-    if args.loglevel:
-        numeric_level = getattr(logging, args.loglevel.upper(), None)
+
+   # Get log level from env var
+    log_level = os.environ['LOG_LEVEL']
+
+    print(f'CONFIG_FILE: {config_file}, LOG_LEVEL: {log_level}')
+
+    if log_level:
+        numeric_level = getattr(logging, log_level.upper(), None)
         if numeric_level:
             logging.basicConfig(
                 filename=LOG_FILE_PATH, level=numeric_level, format=LOG_FORMAT, datefmt=LOG_DATE_FORMAT)
@@ -159,8 +164,8 @@ if __name__ == "__main__":
 
     # Open the Config YAML file
     try:
-        with open(args.file_path) as f:
-            logging.info(f"Reading the config file: {args.file_path}")
+        with open(config_file) as f:
+            logging.info(f"Reading the config file: {config_file}")
             endpoint_list = yaml.safe_load(f)
 
         # The yaml.safe_load can return a Dict so convert it List for further processing
