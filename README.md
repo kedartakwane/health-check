@@ -113,7 +113,7 @@ www.fetchrewards.com has 100% availability percentage
 
 4. To exit, press `Ctrl+C` or `control+Z` on Mac.
 5. Log file at location `logs/health-check.log` will look like this:
-![Log File Output](/images/basic-impl-log-file.png).
+![Log File Output](/images/basic-impl-log-file.png)
 </details>
 
 <details>
