@@ -1,0 +1,2 @@
+- name: fetch rewards index page
+  url: https://www.fetchrewards.com/

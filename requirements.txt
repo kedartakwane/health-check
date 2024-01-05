@@ -1,0 +1,7 @@
+fastapi==0.84.0
+fastapi-utils
+Jinja2==3.0.2
+uvicorn==0.18.3
+py-grpc-prometheus==0.7.0
+requests==2.31.0
+pyyaml==6.0.1
